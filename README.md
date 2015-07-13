@@ -52,3 +52,7 @@ DHIS2 instance information
 -
 
 The DHIS2 instance to which data is being reported should expose the [Web-API](http://dhis2.org/doc/snapshot/en/user/html/ch23.html). The data is sent as XML to the [dataValueSets](http://dhis2.org/doc/snapshot/en/user/html/ch23s05.html) resource, but relying on human-readable "code field" instead of the more obscure uid.
+
+OpenMRS Setup
+-
+In order to map locations to facility UIDs, add a location attribute type called `CODE`.
