@@ -56,3 +56,7 @@ The DHIS2 instance to which data is being reported should expose the [Web-API](h
 OpenMRS Setup
 -
 In order to map locations to facility UIDs, add a location attribute type called `CODE`.
+
+Set the target DHIS server details in the global properties.
+
+Note that the `<uid>` element under `<reportTemplate>` in the template xml refers to the dataset uid in DHIS. The disaggrations refer to category combo options.

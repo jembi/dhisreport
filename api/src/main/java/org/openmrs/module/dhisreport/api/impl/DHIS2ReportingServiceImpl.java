@@ -220,8 +220,13 @@ public class DHIS2ReportingServiceImpl
     {
         Collection<DataValueTemplate> templates = reportDefinition.getDataValueTemplates();
         DataValueSet dataValueSet = new DataValueSet();
-        dataValueSet.setDataElementIdScheme( "code" );
-        dataValueSet.setOrgUnitIdScheme( "code" );
+
+        String dataElementIdScheme = Context.getAdministrationService().getGlobalProperty(
+            "dhisreport.dataElementIdScheme" );
+        String orgUnitIdScheme = Context.getAdministrationService().getGlobalProperty( "dhisreport.orgUnitIdScheme" );
+
+        dataValueSet.setDataElementIdScheme( dataElementIdScheme );
+        dataValueSet.setOrgUnitIdScheme( orgUnitIdScheme );
         dataValueSet.setPeriod( period.getAsIsoString() );
         // dataValueSet.setOrgUnit( "OU_" + location.getId() ); /* Removed
         // because will set directly from the controller */

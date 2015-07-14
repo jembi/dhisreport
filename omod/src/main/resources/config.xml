@@ -91,7 +91,21 @@
 			URL of the page where we post reports (e.g. http://localhost:8081/openmrs18/module/dhisreport/executeReport.form )
 		</description>
 	</globalProperty>
-		
+	<globalProperty>
+		<property>${project.parent.artifactId}.dataElementIdScheme</property>
+		<defaultValue>code</defaultValue>
+		<description>
+			The data element id scheme to use when submitting to DHIS ('uid' or 'code')
+		</description>
+	</globalProperty>
+	<globalProperty>
+		<property>${project.parent.artifactId}.orgUnitIdScheme</property>
+		<defaultValue>code</defaultValue>
+		<description>
+			The data element id scheme to use when submitting to DHIS ('uid' or 'code')
+		</description>
+	</globalProperty>
+
 	
     <!-- Internationalization -->
     <!-- All message codes should start with ${project.parent.artifactId}. -->
