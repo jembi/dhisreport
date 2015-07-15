@@ -43,6 +43,7 @@ import org.openmrs.module.dhisreport.api.dhis.HttpDhis2Server;
 import org.openmrs.module.dhisreport.api.dxf2.DataValue;
 import org.openmrs.module.dhisreport.api.dxf2.DataValueSet;
 import org.openmrs.module.dhisreport.api.model.DataElement;
+import org.openmrs.module.dhisreport.api.utils.DailyPeriod;
 import org.openmrs.module.dhisreport.api.utils.MonthlyPeriod;
 import org.openmrs.module.dhisreport.api.utils.Period;
 import org.openmrs.module.dhisreport.api.utils.WeeklyPeriod;
@@ -177,9 +178,17 @@ public class ReportController
         if ( freq.equalsIgnoreCase( "daily" ) )
         {
 
-            webRequest.setAttribute( WebConstants.OPENMRS_ERROR_ATTR, Context.getMessageSourceService().getMessage(
-                "dhisreport.dateFormatError" ), WebRequest.SCOPE_SESSION );
-            return;
+            try
+            {
+                period = new DailyPeriod( new SimpleDateFormat( "MM/dd/yyyy" ).parse( dateStr ) );
+            }
+            catch ( ParseException pex )
+            {
+                log.error( "Cannot convert passed string to date... Please check dateFormat", pex );
+                webRequest.setAttribute( WebConstants.OPENMRS_ERROR_ATTR, Context.getMessageSourceService().getMessage(
+                    "Date Parsing Error" ), WebRequest.SCOPE_SESSION );
+                return;
+            }
 
         }
 
